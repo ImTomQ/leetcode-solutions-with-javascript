@@ -21,6 +21,5 @@ var isValid = function (s) {
       }
     }
   }
-  if (hashMap.length > 0) return false;
-  return true;
+  return hashMap.length === 0;
 };
