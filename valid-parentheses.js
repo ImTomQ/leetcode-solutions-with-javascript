@@ -21,8 +21,6 @@ var isValid = function (s) {
       }
     }
   }
+  if (hashMap.length > 0) return false;
   return true;
 };
-
-isValid("((({[}[]})))");
-console.log(isValid("((({[][]})))"));
