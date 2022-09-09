@@ -19,6 +19,18 @@ function ListNode(val, next) {
 var addTwoNumbers = function (list1, list2) {
   const list3 = new ListNode();
   let prev = list3;
+  let surplus = 0;
+  let sum = 0;
+
+  while (list1 && list2) {
+    sum = list1.val + list2.val + surplus;
+    if (sum >= 10) {
+      surplus += 1;
+    } else {
+      surplus = 0;
+      prev.next = list1.val + list2.val;
+    }
+  }
 
   return list3.next;
 };
