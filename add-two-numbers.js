@@ -22,21 +22,24 @@ var addTwoNumbers = function (list1, list2) {
   let surplus = 0;
   let sum = 0;
 
-  while (list1 && list2) {
-    sum = list1.val + list2.val + surplus;
+  while (list1 || list2) {
+    sum = (list1?.val || 0) + (list2?.val || 0) + surplus;
     if (sum >= 10) {
+      prev.next = new ListNode(sum - 10);
       surplus += 1;
     } else {
       surplus = 0;
-      prev.next = list1.val + list2.val;
+      prev.next = new ListNode(sum);
     }
+    list1 = list1.next;
+    list2 = list2.next;
+    prev = prev.next;
   }
-
   return list3.next;
 };
 
 // create first linked list: 1 -> 3 -> 10
-var n3 = new ListNode(10, null);
+var n3 = new ListNode(5, null);
 var n2 = new ListNode(3, n3);
 var n1 = new ListNode(1, n2);
 var L1 = n1;
