@@ -26,16 +26,18 @@ var addTwoNumbers = function (list1, list2) {
     sum = (list1?.val || 0) + (list2?.val || 0) + surplus;
     if (sum >= 10) {
       prev.next = new ListNode(sum - 10);
-      surplus += 1;
+      surplus = 1;
     } else {
       surplus = 0;
       prev.next = new ListNode(sum);
     }
-    list1 = list1.next;
-    list2 = list2.next;
+    list1 = list1?.next || 0;
+    list2 = list2?.next || 0;
     prev = prev.next;
   }
-  console.log(list3.next);
+  if (surplus) {
+    prev.next = new ListNode(1);
+  }
   return list3.next;
 };
 
