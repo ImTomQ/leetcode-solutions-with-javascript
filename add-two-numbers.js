@@ -35,6 +35,7 @@ var addTwoNumbers = function (list1, list2) {
     list2 = list2.next;
     prev = prev.next;
   }
+  console.log(list3.next);
   return list3.next;
 };
 
