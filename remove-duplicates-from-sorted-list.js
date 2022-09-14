@@ -9,9 +9,19 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var deleteDuplicates = function(head) {
-    const listnode = new ListNode();
-    let prev = listnode;
+var deleteDuplicates = function (head) {
+  const listnode = new ListNode(null);
+  let prev = listnode;
 
-    
+  while (head) {
+    if (prev.val !== head.val) {
+      prev.next = head;
+      prev = prev.next;
+    }
+    head = head.next;
+  }
+  if (head == null) {
+    prev.next = null;
+  }
+  return listnode.next;
 };
