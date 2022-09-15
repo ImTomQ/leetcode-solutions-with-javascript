@@ -5,27 +5,24 @@
 var findOriginalArray = function (changed) {
   let result = [];
   let arr = changed;
-  let o = true;
-  while (arr.length > 1) {
-    let firstEl = arr[0];
 
-    for (let i = 1; i < arr.length; i++) {
-      if (firstEl === arr[i] / 2 || firstEl === arr[i] * 2) {
-        let g = firstEl > arr[i] ? arr[i] : firstEl;
-        result.push(g);
-        arr = arr.filter((el) => el !== firstEl && el !== arr[i]);
-        o = false;
+  for (let i = 0; i < changed.length; i++) {
+    let count = 1;
+    while (arr && count <= arr.length) {
+      if (arr[0] === arr[count] * 2 || arr[0] === arr[count] / 2) {
+        result.push(arr[0] > arr[count] ? arr[count] : arr[0]);
+        arr = arr.filter((val, index) => index !== 0 && index !== count);
         break;
-      } else {
-        o = true;
       }
+      count++;
     }
   }
-
-  if (o) arr = [];
-
+  if (arr.length > 0) return [];
   return result;
 };
 
-findOriginalArray([0, 3, 2, 4, 6, 0]);
+// findOriginalArray([0, 3, 2, 4, 6, 0]);
 // findOriginalArray([1]);
+// console.log(findOriginalArray([6, 3, 0, 0, 4, 5]));
+console.log(findOriginalArray([1, 2, 2, 4, 1, 8]));
+// console.log(findOriginalArray([4, 4, 16, 20, 8, 8, 2, 10]));
