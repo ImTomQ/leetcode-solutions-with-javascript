@@ -4,14 +4,16 @@
  * @return {number[]}
  */
 
-var twoSum = function(nums, target) {
-    const hashMap = {};
+// https://leetcode.com/problems/two-sum/
 
-    for (let i = 0; i< nums.length; i++) {
-       const num = nums[i];
-       if ( hashMap[num] >= 0 ) {
-            return [hashMap[num], i];
-        }
-        hashMap [target - num] = i;
+var twoSum = function (nums, target) {
+  const hashMap = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    if (hashMap[num] >= 0) {
+      return [hashMap[num], i];
     }
+    hashMap[target - num] = i;
+  }
 };

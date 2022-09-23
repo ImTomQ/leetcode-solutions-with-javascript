@@ -2,6 +2,9 @@
  * @param {string} s
  * @return {boolean}
  */
+
+// https://leetcode.com/problems/valid-parentheses/
+
 var isValid = function (s) {
   const match = {
     "{": "}",

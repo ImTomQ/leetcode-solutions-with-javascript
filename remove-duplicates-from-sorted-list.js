@@ -9,6 +9,9 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
+// https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+
 var deleteDuplicates = function (head) {
   const listnode = new ListNode(null);
   let prev = listnode;

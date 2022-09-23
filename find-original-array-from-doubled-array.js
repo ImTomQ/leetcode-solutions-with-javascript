@@ -2,6 +2,9 @@
  * @param {number[]} changed
  * @return {number[]}
  */
+
+// https://leetcode.com/problems/find-original-array-from-doubled-array/
+
 var findOriginalArray = function (changed) {
   if (changed.length % 2 !== 0) return [];
   let result = [];
