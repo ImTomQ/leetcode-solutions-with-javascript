@@ -3,32 +3,33 @@
  * @return {number[]}
  */
 var findOriginalArray = function (changed) {
+  if (changed.length % 2 !== 0) return [];
   let result = [];
-  let arr = changed;
+  let count = 0;
 
-  arr.sort((a, b) => a - b);
+  changed.sort((a, b) => a - b);
 
-  for (let i = 0; i < changed.length; i++) {
-    let count = 1;
-    while (arr && count <= arr.length) {
-      if (arr[0] === arr[count] * 2 || arr[0] === arr[count] / 2) {
-        result.push(arr[0] > arr[count] ? arr[count] : arr[0]);
-        arr = arr.filter((_, index) => index !== 0 && index !== count);
-        break;
-      }
-      count++;
+  while (changed.length > 0 && count <= changed.length) {
+    const firstEl = changed[0];
+    let iMatch = changed.indexOf(firstEl * 2, 1);
+
+    if (iMatch > 0) {
+      result.push(firstEl);
+      changed.splice(0, 1);
+      changed.splice(iMatch - 1, 1);
+      count = -1;
+    } else {
+      return [];
     }
   }
-  if (arr.length > 0) return [];
+
   return result;
 };
 
 // findOriginalArray([0, 3, 2, 4, 6, 0]);
 // findOriginalArray([1]);
 // console.log(findOriginalArray([6, 3, 0, 0, 4, 5]));
-console.log(findOriginalArray([1, 2, 2, 4, 1, 8]));
-console.log(findOriginalArray([4, 4, 16, 20, 8, 8, 2, 10]));
-console.log(findOriginalArray(
-  
-));
+// console.log(findOriginalArray([1, 2, 2, 4, 1, 8]));
 // console.log(findOriginalArray([4, 4, 16, 20, 8, 8, 2, 10]));
+console.log(findOriginalArray([0, 0, 1, 0]));
+console.log(findOriginalArray([1, 3, 4, 2, 6, 8]));
